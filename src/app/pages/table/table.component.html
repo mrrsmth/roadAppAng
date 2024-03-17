@@ -1,1 +1,18 @@
-<p>table works!</p>
+<table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Technology</th>
+        <th>Theme</th>
+        <th>Bool</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let roadmap of roadmaps">
+        <td>{{ roadmap.id }}</td>
+        <td>{{ roadmap.technology }}</td>
+        <td>{{ roadmap.theme }}</td>
+        <td>{{ roadmap.bool }}</td>
+      </tr>
+    </tbody>
+  </table>
