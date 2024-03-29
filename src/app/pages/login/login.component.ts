@@ -3,6 +3,7 @@ import { ApiService } from '../../services/api.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { tap } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -16,15 +17,18 @@ export class LoginComponent {
   password!: string;
   token!: string;
 
-  constructor(private apiService: ApiService) { }
-
+  constructor(private apiService: ApiService, private router: Router) { }
+  goTable() {
+    this.router.navigate(['/table']);
+  }
   login() {
     this.apiService.login(this.email, this.password).pipe(
       tap((data) => {
         this.token = data.token;
         localStorage.setItem('token', this.token);
-        console.log(this.token);
-        console.log(localStorage.getItem('token'));
+        // console.log(this.token);
+        // console.log(localStorage.getItem('token'));
+        this.goTable();
       })
     ).subscribe();
   }
