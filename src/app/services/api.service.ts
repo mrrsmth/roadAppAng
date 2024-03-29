@@ -6,17 +6,34 @@ import { tap } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class ApiService {
-  private apiUrl = 'http://localhost:8081/api/public'; // указываем базовый URL API
+  private apiUrl = 'http://localhost:8081/api/public';
 
   constructor(private http: HttpClient) { }
 
   signup(name: string, email: string, password: string) {
-    const url = `${this.apiUrl}/signup`; // указываем конечный URL для регистрации
-    const body = { name, email, password }; // создаем объект данных для отправки
+    const url = `${this.apiUrl}/signup`;
+    const body = { name, email, password };
 
     return this.http.post(url, body).pipe(
       tap(response => {
-        console.log('Ответ сервера:', response); // просто выводим ответ сервера в консоль
+        console.log('Ответ сервера:', response);
+      })
+    );
+  }
+
+  login(email: string, password: string) {
+    const url = `${this.apiUrl}/login`;
+    const body = { email, password };
+
+    return this.http.post(url, body).pipe(
+      tap((response: any) => {
+        console.log('Ответ сервера:', response);
+        // Здесь можно добавить код для обработки ответа от сервера, например, сохранение токена аутентификации
+        const token = response.Token;
+        const refreshToken = response.RefreshToken;
+        // Далее можно сохранить токен и refreshToken в localStorage или в другое место для дальнейшего использования
+        localStorage.setItem('token', token);
+        localStorage.setItem('refreshToken', refreshToken);
       })
     );
   }
