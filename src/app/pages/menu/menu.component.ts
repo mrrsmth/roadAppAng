@@ -19,4 +19,8 @@ export class MenuComponent {
     // console.log(this.auth);
     return this.authService.isAuthenticated();
   }
+
+  logout() {
+    localStorage.removeItem('token');
+  }
 }
