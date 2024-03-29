@@ -1,7 +1,8 @@
 <p>menu works!</p>
+{{auth | json }}
 <nav>
-    <a class="button" routerLink="/table">
-        Table
+    <a class="button" *ngIf="isAuthenticated()" routerLink="/table">
+        table
     </a>
     <a class="button" routerLink="/registration">
         registration

@@ -28,13 +28,14 @@ export class ApiService {
     return this.http.post(url, body).pipe(
       tap((response: any) => {
         console.log('Ответ сервера:', response);
-        // Здесь можно добавить код для обработки ответа от сервера, например, сохранение токена аутентификации
         const token = response.Token;
-        const refreshToken = response.RefreshToken;
-        // Далее можно сохранить токен и refreshToken в localStorage или в другое место для дальнейшего использования
-        localStorage.setItem('token', token);
-        localStorage.setItem('refreshToken', refreshToken);
+        localStorage.setItem('token', token); // Сохраняем полученный токен в localStorage
       })
     );
+  }
+
+  isAuthenticated(): boolean {
+    const token = localStorage.getItem('token');
+    return token !== null;
   }
 }
