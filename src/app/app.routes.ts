@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { ErrorComponent } from './pages/error/error.component';
 import { TableComponent } from './pages/table/table.component';
 import { LayoutComponent } from './pages/layout/layout.component';
+import { RegistrationComponent } from './pages/registration/registration.component';
 
 export const routes: Routes = [
     {
@@ -9,6 +10,7 @@ export const routes: Routes = [
         component: LayoutComponent,
         children: [
           { path: 'table', component: TableComponent },
+          { path: 'registration', component: RegistrationComponent },
         ],
       },
       { path: '',   redirectTo: '', pathMatch: 'full' },
