@@ -1,14 +1,22 @@
 <nav>
-    <a class="button" *ngIf="isAuthenticated()" routerLink="/table">
+    <a class="button" 
+        *ngIf="isAuthenticated()" 
+        routerLink="/table"
+        routerLinkActive="active"
+    >
         table
     </a>
-    <a class="button" routerLink="/registration">
+    <a class="button" 
+        routerLink="/registration"
+        routerLinkActive="active"
+    >
         registration
     </a>
-    <a class="button" routerLink="/login">
+    <a class="button" 
+        routerLink="/login"
+        routerLinkActive="active"
+    >
         login
     </a>
-    <a class="button" (click)="logout()">
-        logout
-    </a>
+    <a class="button" (click)="logout()">logout</a>
 </nav>
