@@ -3,6 +3,7 @@ import { RouterLink, RouterOutlet } from '@angular/router';
 import { TableComponent } from '../table/table.component';
 import { AuthService } from '../../services/auth.service';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-menu',
@@ -12,7 +13,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './menu.component.scss'
 })
 export class MenuComponent {
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private router: Router) {}
   auth: boolean = false
   isAuthenticated(): boolean {
     // this.auth = this.authService.isAuthenticated();
@@ -22,5 +23,6 @@ export class MenuComponent {
 
   logout() {
     localStorage.removeItem('token');
+      this.router.navigate(['/login']);
   }
 }
