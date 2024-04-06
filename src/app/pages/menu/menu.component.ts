@@ -4,7 +4,6 @@ import { TableComponent } from '../table/table.component';
 import { AuthService } from '../../services/auth.service';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
-
 @Component({
   selector: 'app-menu',
   standalone: true,
